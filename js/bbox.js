@@ -448,6 +448,29 @@ function validateStringAsBounds(bounds) {
              parseFloat(splitBounds[1]) < parseFloat(splitBounds[3])))
 }
 
+function openAttachment() {
+    document.getElementById('attachment').click();
+  }
+  
+  function fileSelected(input){
+    document.getElementById('btnAttachment').value = "File: " + input.files[0].name
+    var file = input.files[0];
+    var reader = new FileReader();
+    reader.onload = function(progressEvent){    
+        var fileContentArray = this.result.split(/\r\n|\n/);
+        for(var line = 0; line < fileContentArray.length-1; line++){
+            console.log(line + " --> "+ fileContentArray[line]);
+            var sniffer = FormatSniffer( { data :  fileContentArray[line] } );
+            var is_valid = sniffer.sniff();
+            if (is_valid) {
+                rsidebar.hide();
+            
+            }
+        }
+    };
+    reader.readAsText(file);
+  }
+
 $(document).ready(function() {
     /* 
     **

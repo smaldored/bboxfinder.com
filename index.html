@@ -39,6 +39,8 @@
     <div id="rsidebar" >
       <button id="add">Add</button>
       <button id="clear">Clear</button>
+      <input type="file" class="file" id="attachment" style="display: none;" onchange="fileSelected(this)"/>
+      <input type="button" class="file" id="btnAttachment" onclick="openAttachment()" value="Import"/>
       <textarea placeholder="Paste GeoJSON, WKT, ogrinfo extent output or a bbox in the format (xMin,yMin,xMax,yMax)" title="Paste It!"></textarea>
     </div>
     <div id="lsidebar">
